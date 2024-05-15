@@ -1,44 +1,61 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
-			page: "",
-			charactersPages: null,
-			charactersUrl: "https://www.swapi.tech/api/people?page=1&limit=10",
-			currentCharacter: null,
-			currentCharacterUrl: sessionStorage.getItem('currentCharacterUrl') ? sessionStorage.getItem('currentCharacterUrl') : ''
+			info: [],
+			page: "home",
+			pagination: null,
+			currentPagination: 1,
+			infoUrl: "",
+			currentInfo: null,
+			currentInfoUrl: sessionStorage.getItem('currentInfoUrl') ? sessionStorage.getItem('currentInfoUrl') : '',
+			favoritos: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			getCharacters: async () => {
-				const response = await fetch(getStore().charactersUrl);
-				if(!response.ok) {
+			getInfo: async () => {
+				const response = await fetch(getStore().infoUrl);
+				if (!response.ok) {
 					console.log("Error");
 					return
 				}
 				const data = await response.json();
-				setStore({characters: data.results});
-				setStore({charactersPages: data.total_pages});
+				setStore({ info: data.results });
+				setStore({ pagination: data.total_pages });
 			},
 			changePage: (page) => {
-				setStore({page: page})
+				if(page != getStore().page) {
+					setStore({ currentPagination: 1 })
+				}
+				setStore({ page: page })
+				sessionStorage.setItem('page', page)
 			},
-			characterPagination: (pagination) => {
-				setStore({charactersUrl: pagination})
-				getActions().getCharacters()
+			pagination: (pagination) => {
+				setStore({ infoUrl: pagination })
+				getActions().getInfo()
 			},
-			setCharacterURL: (text) => {
-				setStore({currentCharacterUrl: text})
-				sessionStorage.setItem('currentCharacterUrl', text)
+			setCurrentPagination: (currentPage) => {
+				setStore({ currentPagination: currentPage })
 			},
-			getCharacterDetails: async () => {
-				const response = await fetch(getStore().currentCharacterUrl);
-				if(!response.ok) {
+			setURL: (text) => {
+				setStore({ currentInfoUrl: text })
+				sessionStorage.setItem('currentInfoUrl', text)
+			},
+			getInfoDetails: async () => {
+				const response = await fetch(getStore().currentInfoUrl);
+				if (!response.ok) {
 					console.log("Error");
 					return
 				}
 				const data = await response.json();
-				setStore({currentCharacter: data.result});
+				setStore({ currentInfo: data.result });
+			},
+			setFavorties: (fav) => {
+				getStore().favoritos.push(fav)
+				setStore({ favoritos: getStore().favoritos });
+			},
+			deleteFavorties: (item) => {
+				const arr = getStore().favoritos.filter(((el) => (el.id !== item.id) && (el.name !== item.name)))
+				setStore({ favoritos: arr });
 			}
 		}
 	};

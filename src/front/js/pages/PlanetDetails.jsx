@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext.js";
 
-export const CharacterDetails = () => {
+export const PlanetDetails = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(()=>{
