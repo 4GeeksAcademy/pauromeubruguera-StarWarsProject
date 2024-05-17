@@ -1,23 +1,19 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext.js";
-import { Link } from "react-router-dom";
 import { Pagination } from "../component/Pagination.jsx";
+import { Favorites } from "../component/Favorites.jsx";
+import { Image } from "../component/Image.jsx";
 
 export const Planets = () => {
     const { store, actions } = useContext(Context);
 
-    const handleCharacter = (url) => {
-        actions.setURL(url)
-    }
-
     useEffect(() => {
-        actions.pagination("https://www.swapi.tech/api/planets?page=1&limit=12")
         actions.changePage("planets")
-        actions.getInfo()
+        actions.pagination()
     }, [])
 
     return (
-        <div className="container-fluid my-4">
+        <div className="container-fluid my-4 px-4">
             <Pagination />
             <div className="row">
                 {!store.info ?
@@ -26,11 +22,11 @@ export const Planets = () => {
                     <>
                         {store.info.map((item) =>
                             <div className="col-2" key={item.uid}>
-                                <div className="card">
-                                    <img src={`https://starwars-visualguide.com/assets/img/${store.page}/${item.uid}.jpg`} className="card-img-top" alt="..." />
-                                    <div className="card-body">
+                                <div className="card my-4">
+                                    <Image item={item} />
+                                    <div className="card-body d-flex justify-content-between">
                                         <h5 className="card-title">{item.name}</h5>
-                                        <Link to={`/planet-details/${item.uid}`} className="btn btn-primary" onClick={() => handleCharacter(item.url)}>Details</Link>
+                                        <Favorites id={item.uid} url={item.url} name={item.name} />
                                     </div>
                                 </div>
                             </div>

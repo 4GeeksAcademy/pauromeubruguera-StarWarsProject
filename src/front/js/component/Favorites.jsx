@@ -31,13 +31,13 @@ export const Favorites = (props) => {
     return (
         <>
             {store.favoritos.filter((el) => (el.id.includes(props.id)) && (el.name.includes(props.name))).length > 0 ?
-                <button onClick={deleteFavorites} id={props.id} className="btn btn-primary">
+                <span onClick={deleteFavorites} id={props.id} className="btn-fav">
                     {<i className="fa-solid fa-star"></i>}
-                </button>
+                </span>
                 :
-                <button onClick={handleFavorites} id={props.id} className="btn btn-primary">
+                <span onClick={handleFavorites} id={props.id} className="btn-fav">
                     <i className="fa-regular fa-star"></i>
-                </button>
+                </span>
             }
 
         </>

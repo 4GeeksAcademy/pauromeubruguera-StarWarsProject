@@ -1,3 +1,279 @@
+@import url('https://fonts.cdnfonts.com/css/star-jedi');
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+@import url('https://fonts.cdnfonts.com/css/star-jedi-hollow');
+
+body {
+    font-family: 'Star Jedi', sans-serif;
+    color: yellow;
+}
+
+h5 {
+    color: yellow;
+}
+
+
+
+.menu-background {
+    background-color: #000;
+    border: 1px solid yellow;
+}
+
+.dropdown-menu {
+    padding: 2px 0;
+    color: yellow;
+    .placeholderFav {
+        text-align: center;
+        padding: 5px 0;
+    }
+    hr {
+        color: yellow;
+        width: 80%;
+        height: 2px;
+        margin: 0 auto;
+    }
+}
+
+.dropdown-menu li:last-child hr {
+    display: none;
+}
+
+.favorites-list {
+    a {
+        color: yellow;
+        width: 80%;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    .deleteFav {
+        color: yellow;
+        width: 20%;
+        cursor: pointer;
+        padding: 4px;
+
+        &:hover {
+            color: red;
+        }
+    }
+
+}
+
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 33.25%;
+    position: relative;
+    height: 0;
+}
+
+.video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.empire {
+    .card {
+        border: 1px solid red;
+    }
+
+    a {
+        &:hover {
+            color: red;
+        }
+    }
+
+    .btn-pagination {
+        color: red;
+
+        &.active {
+            background-color: red;
+        }
+
+        &:hover {
+            background-color: red;
+            color: yellow;
+        }
+    }
+    .badge {
+        background-color: red;
+    }
+    .active {
+        color: red;
+    }
+
+    .logoContainer {
+        .logo.empireLogo {
+            border: 1px solid red;
+            opacity: 1;
+        }
+    }
+}
+
+.rebels {
+    .card {
+        border: 1px solid blue;
+    }
+
+    a {
+        &:hover {
+            color: blue;
+        }
+    }
+    .badge {
+        background-color: blue;
+    }
+    .btn-pagination {
+        color: blue;
+
+        &.active {
+            background-color: blue;
+        }
+
+        &:hover {
+            background-color: blue;
+            color: yellow;
+        }
+    }
+
+    .active {
+        color: blue;
+    }
+
+    .logoContainer {
+        .logo.rebelsLogo {
+            border: 1px solid blue;
+            opacity: 1;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    transition: 0.5s all;
+    color: yellow;
+
+    &:hover {
+        color: red;
+    }
+}
+
+.logoContainer {
+    .logo {
+        background-color: white;
+        width: 30px;
+        margin: 0 5px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        opacity: 0.5;
+        transition: 1s all;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.btn-fav {
+    cursor: pointer;
+    color: yellow;
+    font-size: 20px
+}
+
+.pagination {
+    text-align: center;
+    display: block;
+}
+
+.btn-pagination {
+    background-color: yellow;
+    margin: 0 5px;
+    color: red;
+
+    &.active {
+        background-color: red;
+        color: yellow;
+    }
+
+    &:hover {
+        background-color: red;
+        color: yellow;
+    }
+}
+
+.imgContainer {
+    position: relative;
+}
+
+.card:hover {
+    .opacityFilter {
+        opacity: 0.8;
+    }
+}
+
+.opacityFilter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 1;
+
+    span {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 44%;
+    }
+}
+
+.card-body {
+    background-color: #0c0c0c;
+}
+
+.starWarsFont {
+    font-family: 'Star Jedi Hollow', sans-serif;
+    color: yellow;
+    font-size: 30px;
+}
+
 .active {
-    color: red !important;
+    color: red;
+}
+
+.stars {
+    background: url(http://www.script-tutorials.com/demos/360/images/stars.png) top center #000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.twinkling {
+    background: url(http://www.script-tutorials.com/demos/360/images/twinkling.png) top center;
+    -moz-animation: move-twink-back 200s linear infinite;
+    -ms-animation: move-twink-back 200s linear infinite;
+    -o-animation: move-twink-back 200s linear infinite;
+    -webkit-animation: move-twink-back 200s linear infinite;
+    animation: move-twink-back 200s linear infinite;
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
