@@ -10,7 +10,40 @@ body {
 h5 {
     color: yellow;
 }
-
+.detailsContainer {
+    width: 60%;
+    margin: 0 auto;
+    padding: 5% 0;
+    .detailsText {
+        width: 70%;
+        padding: 0 5%;
+        h3 {
+            margin-bottom: 50px;
+        }
+        p {
+            line-height: 12px;
+        }
+    }
+    .detailsImage {
+        width: 30%;
+    }
+}
+.contactList {
+    width: 50%;
+    margin: 0 auto;
+    .editIcon {
+        padding: 5px;
+        cursor: pointer;
+    }
+    
+    .deleteIcon {
+        padding: 5px;
+        cursor: pointer;
+    }
+    .buttonContainer {
+        text-align: right;
+    }
+}
 
 
 .menu-background {

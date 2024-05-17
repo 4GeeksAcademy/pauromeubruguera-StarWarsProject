@@ -15,7 +15,7 @@ export const Image = (props) => {
     return (
         <div className="imgContainer">
             <img src={`https://starwars-visualguide.com/assets/img/${store.page}/${props.item.uid}.jpg`} onError={imgError} className="card-img-top" alt="..." />
-            <Link to={`/character-details/${props.item.uid}`} className="" onClick={() => handleCharacter(props.item.url)}>
+            <Link to={`/${store.page}-details/${props.item.uid}`} className="" onClick={() => handleCharacter(props.item.url)}>
                 <div className="opacityFilter">
                     <span>Details</span>
                 </div>

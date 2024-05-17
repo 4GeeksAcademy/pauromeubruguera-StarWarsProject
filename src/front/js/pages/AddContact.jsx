@@ -24,7 +24,7 @@ export const AddContact = () => {
     }
 
     return (
-        <div className="container-fluid my-4">
+        <div className="container-fluid my-4 w-50">
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">Name</label>

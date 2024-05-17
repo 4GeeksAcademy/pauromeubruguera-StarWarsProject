@@ -41,7 +41,7 @@ export const Contacts = () => {
     }, [])
 
     return (
-        <div className="container-fluid my-4">
+        <div className="container-fluid my-4 contactList">
             {!store.deleteContact ? "" :
                 <div className="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
                     <div className="modal-dialog">
@@ -98,9 +98,6 @@ export const Contacts = () => {
                     </div>
                 </div>
             }
-            <div>
-                <Link to="/add-contact" className="btn btn-success">Add Contact</Link>
-            </div>
             <ul className="list-group">
                 {!store.contacts ? ""
                     :
@@ -109,10 +106,10 @@ export const Contacts = () => {
                             <li key={item.id} className="list-group-item d-flex justify-content-between">
                                 {item.name}
                                 <div>
-                                    <span className="text-success me-2" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(item)}>
+                                    <span className="text-success me-2 editIcon" data-bs-toggle="modal" data-bs-target="#editModal" onClick={() => handleEdit(item)}>
                                         <i className="far fa-edit"></i>
                                     </span>
-                                    <span className="text-danger" onClick={() => handleModal(item)} data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <span className="text-danger deleteIcon" onClick={() => handleModal(item)} data-bs-toggle="modal" data-bs-target="#deleteModal">
                                         <i className="fas fa-trash"></i>
                                     </span>
                                 </div>
@@ -122,6 +119,9 @@ export const Contacts = () => {
                     </>
                 }
             </ul>
+            <div className="buttonContainer">
+                <Link to="/add-contact" className="btn btn-success my-3">Add Contact</Link>
+            </div>
         </div>
     )
 }

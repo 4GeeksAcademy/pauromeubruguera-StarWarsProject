@@ -2,11 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			info: [],
-			page: "home",
+			page: sessionStorage.getItem('page') ? sessionStorage.getItem('page') : 'home',
 			totalPages: null,
 			currentPagination: 1,
 			infoUrl: "",
-			currentInfo: null,
+			currentInfo: sessionStorage.getItem('currentInfo') ? JSON.parse(sessionStorage.getItem('currentInfo')) : "",
 			currentInfoUrl: sessionStorage.getItem('currentInfoUrl') ? sessionStorage.getItem('currentInfoUrl') : '',
 			favoritos: sessionStorage.getItem('favorites') ? JSON.parse(sessionStorage.getItem('favorites')) : [],
 			theme: "empire",
@@ -71,11 +71,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				const data = await response.json();
 				setStore({ currentInfo: data.result });
+				sessionStorage.setItem('currentInfo', JSON.stringify(data.result))
 			},
 			setFavorties: (fav) => {
 				getStore().favoritos.push(fav)
 				setStore({ favoritos: getStore().favoritos });
-				console.log(getStore().favoritos)
 				sessionStorage.setItem('favorites', JSON.stringify(getStore().favoritos))
 			},
 			deleteFavorties: (item) => {

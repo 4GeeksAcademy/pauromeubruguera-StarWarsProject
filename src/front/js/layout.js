@@ -36,9 +36,9 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Characters />} path="/characters" />
-                        <Route element={<CharacterDetails />} path="/character-details/:userId" />
-                        <Route element={<PlanetDetails />} path="/planet-details/:userId" />
-                        <Route element={<VehicleDetails />} path="/vehicle-details/:userId" />
+                        <Route element={<CharacterDetails />} path="/characters-details/:userId" />
+                        <Route element={<PlanetDetails />} path="/planets-details/:userId" />
+                        <Route element={<VehicleDetails />} path="/vehicles-details/:userId" />
                         <Route element={<Planets />} path="/planets" />
                         <Route element={<Vehicles />} path="/vehicles" />
                         <Route element={<Contacts />} path="/contacts" />
