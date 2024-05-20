@@ -32,7 +32,17 @@ module.exports = {
             options: { name: '[name].[ext]' }
           }
         }, //for images
-        { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
+        { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] }, //for fonts
+        {
+          test: /\.(mp4|webm|ogg|avi|mkv)$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'videos/'
+            }
+          }
+        }, //for videos
     ]
   },
   resolve: {
