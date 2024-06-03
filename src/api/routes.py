@@ -4,7 +4,8 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
-from api.models import db, Users, Posts, Comments, Planets, Characters, Films, CharacterFilms
+from flask_jwt_extended import create_access_token
+from api.models import db, Users, Posts, Comments, Planets, Characters, Films, Casts
 
 
 api = Blueprint('api', __name__)
@@ -34,7 +35,7 @@ def handle_users():
 
 
 @api.route('/users/<int:id>', methods=['GET', 'PUT', 'DELETE'])
-def handle_users(id):
+def handle_user(id):
     response_body = {}
     if request.method == 'GET':
         users = db.session.execute(db.select(Users).where(Users.id == id)).scalars()
@@ -73,3 +74,16 @@ def handle_users(id):
         response_body['data'] = {}
         response_body['message'] = "Usuario inexistente"
         return response_body, 404
+
+# Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT.
+@api.route("/login", methods=["POST"])
+def login():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    if username != "test" or password != "test":
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token)
+
